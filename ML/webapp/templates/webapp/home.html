@@ -1,53 +1,57 @@
-{% extends 'webapp/base.html' %}
-{% block content %}
-
+{% extends 'webapp/base.html' %} {% block content %}
+<br>
 <div class="container">
+    <article>
+        <h1> Creating a Machine Learning Based WebApp Using Django</h1>
+        <hr>
+        <p>
+            The purpose of developing a WebApp for a Machine Learning Model is to help us view a UI of the designed model and seeing the prediction. Using a Job Data from
+            <a href="https://www.kaggle.com">Kaggle</a> we will clean the data and focus on only two jobs two type of Jobs -> Java Developer, and Sales Manager.
+        </p>
+    </article>
+    <br>
+    <br>
+    <div class="col-md-10">
+        <h5>ICISM ML JOB PREDICTION</h5>
+        <p class="text-primary"><a href="https://github.com/sirox548/CS491-SENIOR-PROJECT/blob/master/ML/data/data.csv">Sample Data</a></p>
+        <div class="card card-body">
+            <table class="table table-sm">
+                <tr>
+                    <th>Job Title</th>
+                    <th>Description</th>
+                </tr>
+                {% for job in Jobs %}
+                <tr>
+                    <td>{{job.jobs}}</td>
+                    <td>{{job.job_description}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
 
-    <h1>Titanic survival prediction</h1>
-    <form action="">
-      {% csrf_token %}
-
-      <p>Passenger Class:</p>
-      <input type="text" name="pclass">
-      <br>
-
-      <p>Sex:</p>
-      <input type="text" name="sex">
-      <br>
-
-      <p>Age:</p>
-      <input type="text" name="age">
-      <br>
-
-      <p>Sibsp:</p>
-      <input type="text" name="sibsp">
-      <br>
-
-      <p>Parch:</p>
-      <input type="text" name="parch">
-      <br>
-
-      <p>Fare:</p>
-      <input type="text" name="fare">
-      <br>
-
-      <p>Embark Category C:</p>
-      <input type="text" name="embC">
-      <br>
-
-      <p>Embark Category Q:</p>
-      <input type="text" name="embQ">
-      <br>
-
-      <p>Embark Category S:</p>
-      <input type="text" name="embS">
-      <br>
-
-      <input class="btn btn btn-warning" type="submit" value='Get Predictions'>
-    </form>
 </div>
+<hr>
+<br>
+<div class="container">
+    <h1>PREDICTIONS</h1>
+
+    <div className="content">
+        <form action="" method="POST">
+            {% csrf_token %}
+            <label>Job Description</label>
+            <br>
+            <textarea class="form-control rounded-0" type="text" name="description" rows="5" placeholder="enter job description"></textarea>
+            <br>
+            <hr>
+            <button type="submit" value="Submit" class="btn btn-success">Predict</button>
+            <button type="reset" value="Reset" class="btn btn-danger">Reset</button>
+            <hr>
 
 
+        </form>
+    </div>
 
+</div>
 
 {% endblock content %}
