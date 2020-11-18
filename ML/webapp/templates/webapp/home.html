@@ -23,7 +23,7 @@
                 {% for job in Jobs %}
                 <tr>
                     <td>{{job.jobs}}</td>
-                    <td>{{job.job_description}}</td>
+                    <td>{{job.description}}</td>
                 </tr>
                 {% endfor %}
             </table>
@@ -35,23 +35,34 @@
 <br>
 <div class="container">
     <h1>PREDICTIONS</h1>
-
-    <div className="content">
         <form action="" method="POST">
             {% csrf_token %}
-            <label>Job Description</label>
-            <br>
-            <textarea class="form-control rounded-0" type="text" name="description" rows="5" placeholder="enter job description"></textarea>
-            <br>
-            <hr>
-            <button type="submit" value="Submit" class="btn btn-success">Predict</button>
-            <button type="reset" value="Reset" class="btn btn-danger">Reset</button>
-            <hr>
+            <table>
+                              {{form.as_table}}
+            </table>
 
 
+            <hr>
+            <input type="submit" value="Predict" class="btn btn-success">
+            <input type="reset" value="Reset" class="btn btn-danger">
+            <hr>
         </form>
-    </div>
 
+    <br>
+    <br>
+    <footer>
+    <br>
+    <ul>
+        <h4>TOOLS</h4>
+        <li>Python</li>
+        <li>Django</li>
+        <li>JupyterNotebook</li>
+        <p class="text-info">Credits : Kaggle,  </p>
+        <p class="text-info">Author : <a href=""> Osman AbdulRahman</a>  </p>
+    </ul>
+
+</footer>
 </div>
+
 
 {% endblock content %}
