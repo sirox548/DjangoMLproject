@@ -2,10 +2,6 @@ from django.shortcuts import render, redirect
 from .models import Description
 from .forms import JobForm
 
-# ML Libraries
-import numpy as np
-# from django_pandas.managers import DataFrameManager
-
 
 def home(request):
     Jobs = Description.objects.all()
@@ -16,12 +12,11 @@ def home(request):
 
 
 def results(request):
-    form = JobForm()
-    context = {'form': form}
-    return render(request, 'webapp/results.html', context)
+    return render(request, 'webapp/results.html')
 
 
-def getPredictions():
-
-    pass
-
+def predict():
+    qs = Description.objects.all()
+    df = qs.to_dataframe()
+    df = qs.to_dataframe(fieldnames=['description'])
+    return df
